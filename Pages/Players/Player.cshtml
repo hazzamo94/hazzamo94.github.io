@@ -1,0 +1,41 @@
+﻿@page "{Id}"
+@model LeagueProject.Pages.Players.PlayerModel
+@{
+    ViewData["Title"] = "@Model.Player.Name";
+}
+
+<section class="grid">
+    <!--Logo-->
+    <div class="jumbotron p-2">
+        <img src="~/image/nfl/logo/@(Model.Player.TeamId).png" />
+        <!--Title and headings-->
+        <h4 class="p-2">@Model.Player.Team.Name</h4>
+        <h4 class="bg-primary p-1 text-white">@Model.Player.Name</h4>
+    </div>
+</section>
+
+<!--Player details.-->
+<section>
+    <div>
+        <div>Number: @Model.Player.Number</div>
+        <div>Position: @Model.Player.Position</div>
+        <div>Rank: @Model.Player.Rank</div>
+
+        <hr />
+
+        <div>Height: @Model.Player.Height</div>
+        <div>Weight: @Model.Player.Weight</div>
+        <div>Age: @Model.Player.Age</div>
+
+        <hr />
+
+        <div>Experience: @Model.Player.Experience</div>
+        <div>Rating: @Model.Player.Rating</div>
+        <div>Depth: @Model.Player.Depth</div>
+
+        <hr />
+
+        <div>College: @Model.Player.College</div>
+        <div>State: @Model.Player.State</div>
+    </div>
+</section>

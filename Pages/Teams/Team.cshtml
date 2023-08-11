@@ -1,0 +1,61 @@
+﻿@page "{Id}"
+@model LeagueProject.Pages.Teams.TeamModel
+@{
+   ViewData["Title"] = "@Model.Team.Name";
+}
+
+<section class="grid">
+
+    <!--Logo-->
+    <div class="jumbotron p-2">
+        <img src="~/image/nfl/logo/@(Model.Team.TeamId).png"/>
+    </div>
+    <!--Title and headings-->
+    <h4 class="bg-primary p-1 text-white">@Model.Team.Name</h4>
+        
+    <h5 class="p-2">Division: @Model.Team.Division.Name</h5>
+
+    <!--Stadium, stadium img and other details.-->
+    <section>
+        <div>
+            <div>Conference: @Model.Team.Division.ConferenceId - Division: @Model.Team.DivisionId</div>
+            <div>Record: @Model.Team.Win-@Model.Team.Loss-@Model.Team.Tie</div>
+
+            <hr/>
+
+            <div>@Model.Team.Stadium</div>
+            <div>Capacity: @Model.Team.Capacity</div>
+
+            <hr/>
+
+            <div>@Model.Team.Address</div>
+            <div>@Model.Team.City, @Model.Team.State</div>
+            <div>@Model.Team.Zip</div>
+        </div>
+        <img src="~/image/nfl/stadium/@(Model.Team.TeamId).jpg"/>
+        <img src="~/image/nfl/seating/@(Model.Team.TeamId).png" />
+    </section>
+
+    <!--Column headings for player table.-->
+    <section class="grid container">
+        <div class="d-flex bg-primary text-white">
+            <div class="p-1" style="flex:0 0 5%">Number</div>
+            <div class="p-1" style="flex:0 0 25%">Name</div>
+            <div class="p-1" style="flex:0 0 5%">Position</div>
+            <div class="p-1" style="flex:0 0 5%">Rank</div>
+            <div class="p-1" style="flex:0 0 25%">State</div>
+        </div>
+
+        <!--Foreach loop generates player table.-->
+         @foreach (Player Player in Model.Team.Players)
+            {
+             <a class="d-flex p1" asp-page="../Players/Player" asp-route-id="@Player.PlayerId">
+                 <div style="flex:0 0 5%">@Player.Number</div>
+                 <div style="flex:0 0 25%">@Player.Name</div>
+                 <div style="flex:0 0 5%">@Player.Position</div>
+                 <div style="flex:0 0 5%">@Player.Rank</div>
+                 <div style="flex:0 0 25%">@Player.State</div>
+             </a>
+            }
+    </section>
+</section>
